@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="{% static 'search_app/results.css' %}" rel="stylesheet">
+</head>
+<body>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 left-side-sidebar">
+            <div class="row text-center">
+<!--                <div class="col-md-8 offset-md-2">-->
+<!--                    <h3>Not happy with the results?</h3>-->
+<!--                    <p class="body-text-3x">Type your search again</p>-->
+<!--                    <div class="small-search-wrap">-->
+<!--                        <div class="search-form">-->
+<!--                            <form action="#">-->
+<!--                                <div class="form-group">-->
+<!--                                    <input type="text" value="test" placeholder="Search something here" maxlength="100"-->
+<!--                                           class="form-control" name="name" id="name">-->
+<!--                                </div>-->
+<!--                            </form>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <hr class="invisible small">-->
+<!--                </div>-->
+                <div class="col-md-12">
+                    <div class="v-heading-v2">
+                        <h4 class="v-search-result-count">About 3 results for query: {{query}}</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix mt-40">
+                <ul class="xsearch-items">
+                    {% for result in results %}
+                    <li class="search-item">
+                        <div class="search-item-img">
+                            <a href="#">
+                                <img src="https://image.shutterstock.com/image-vector/digital-document-icon-isolated-on-260nw-1920629285.jpg" width="70" height="70">
+                            </a>
+                        </div>
+                        <div class="search-item-content">
+                            <h3 class="search-item-caption"><a href="#">{{result.title}}</a></h3>
+
+                            <div class="search-item-meta mb-15">
+                                <ul class="list-inline">
+                                    <li><a href="#">Similarity score: {{result.similarity_score}}</a></li>
+                                </ul>
+<!--                                <ul class="list-inline">-->
+<!--                                    <li class="time">November 10, 2017‎</li>-->
+<!--                                    <li><a href="#">0 Comments</a></li>-->
+<!--                                    <li class="pr-0">in</li>-->
+<!--                                    <li class="pl-0"><a href="#">Design</a></li>-->
+<!--                                </ul>-->
+                            </div>
+                            <div>
+                                <ul>
+                                    {% for line in result.line_matches %}
+                                    <li>{{line}}</li>
+                                    {% endfor %}
+                                </ul>
+<!--                                Illustration by Julian Burford. Lorem ipsum dolor sit amet, consectetur adipiscing elit.-->
+<!--                                Etiam aliquam massa quis mauris sollicitudin commodo venenatis ligula commodo. Sed-->
+<!--                                blandit convallis dignissim. Pellentesque pharetra velit eu velit elementum et convallis-->
+<!--                                erat vulputate.-->
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="clearfix pl-90">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-double-left"></i>
+                            </a></li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">..</a></li>
+                            <li class="page-item"><a class="page-link" href="#">20</a></li>
+                            <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-double-right"></i>
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="clearfix pull-right">
+                        <span class="o-7">Page 1 of 8</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
